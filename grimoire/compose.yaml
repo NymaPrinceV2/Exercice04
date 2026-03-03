@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+  grimoire:
+    container_name: grimoire
+    image: blemelin/grimoire
+    user: ${UID}:${GID}
+    ports:
+      - 8242:8242
+    volumes:
+      - ./data:/grimoire/data
+    restart: "unless-stopped"
