@@ -230,3 +230,116 @@ que tous tes fichiers ont bien été téléversés.
 [Grimoire]: https://hub.docker.com/r/blemelin/grimoire
 [HedgeDoc]: https://hedgedoc.org/
 [Planka]: https://docs.planka.cloud/docs/welcome
+
+# Travail Pratique 2 – Docker et Docker Compose
+
+Dans ce travail pratique, tu devras déployer plusieurs applications web en utilisant Docker et Docker Compose. Certaines
+applications devront être déployées à l'aide de simples commandes `docker run`, et d'autres à l'aide d'un fichier 
+`compose.yaml` (et son fichier `.env` qui l'accompagne).
+
+Contrairement aux exercices, tu devras consulter la **documentation officielle de chaque application** afin de trouver :
+
+* l'image Docker à utiliser
+* les ports à exposer
+* les volumes à configurer
+* les variables d'environnement nécessaires
+
+## Conditions de réalisation
+
+- **Valeur de la note finale** : 20%
+- **Contexte de réalisation** : Individuel
+- **Durée** : 1 ½ semaine
+- **Utilisation de l'iAG** : Niveau 1 - Toi qui complètes (assistance à la rédaction)
+
+## Tâches à réaliser
+
+Tu trouveras dans ce dépôt un dossier pour chaque site à déployer. Tu dois placer dans ces dossiers :
+
+- Un fichier `deploy.sh` pour les applications déployées avec `docker run`.
+- Un fichier `compose.yaml` et `.env` pour les applications déployées avec `docker compose up`.
+
+Dès le début du travail, crée une branche `dev` à partir de la branche `main`. À la fin du travail, tu devras fusionner
+la branche `dev` dans la branche `main` pour confirmer que tu as remis le travail. Chaque partie du travail devra être 
+réalisée dans sa propre feature-branch (le nom de la branche te sera indiqué). Ces branches devront être fusionnées dans
+la branche `dev` pour confirmer que que tu as terminé la partie en cours. Ne supprime pas les branches : elles seront 
+utilisées lors de la correction.
+
+### Partie 1 : Déploiement avec `docker run`
+
+Pour chaque application dans cette partie, rédige un fichier `deploy.sh` contenant une commande `docker run` pour
+déployer et exécuter l'application. Inclus aussi dans ce fichier la création de tout ce qui est nécessaire à l'exécution
+de la commande (création de dossiers, d'utilisateurs, modifications de droits d'accès, etc).
+
+Dans tous les cas :
+
+- Les applications doivent s'exécuter en arrière-plan, pas de manière interactive.
+- Les applications doivent s'exécuter avec les privilèges de l'utilisateur `student`, si c'est possible.
+- Les fichiers de l'application doivent être dans le dossier `/srv/nom-de-application`.
+
+#### Application 1 - Memos (`feat/memos`)
+
+Déploie une instance de [Memos], une application de notes légère pour capturer et partager des idées. L'application doit
+s'exécuter sur le port `81`.
+
+![Memos](.docs/memos.png)
+
+#### Application 2 - Opengist (`feat/opengist`)
+
+Déploie une instance de [Opengist], une application de type *pastebin* basée sur Git. L'application doit s'exécuter sur le
+port `82`.
+
+![Opengist](.docs/opengist.png)
+
+### Partie 2 : Déploiement avec `docker compose`
+
+Pour chaque application dans cette partie, rédige un fichier `compose.yaml` (et son fichier `.env`) pour déployer 
+et exécuter l'application. Inclus aussi un fichier `deploy.sh` créant tout ce qui est nécessaire à l'exécution de
+l'application (incluant la commande `docker compose` déclenchant l'exécution de l'application).
+
+Dans tous les cas :
+
+- Les applications doivent s'exécuter en arrière-plan, pas de manière interactive.
+- Les applications doivent s'exécuter avec les privilèges de l'utilisateur `student`, si c'est possible.
+- Les fichiers de l'application doivent être dans le dossier `/srv/nom-de-application`.
+
+#### Application 3 - Mealie (`feat/mealie`)
+
+Déploie une instance de [Mealie], un gestionnaire de recettes et planificateur de repas. L'application doit s'exécuter 
+sur le port `83`. Vous devez déployer l'application avec une base de données **PostgreSQL** (pas *SQLite*).
+
+![Mealie](.docs/mealie.png)
+
+#### Application 4 - Bracket (`feat/bracket`)
+
+Déploie une instance de [Bracket], une application de gestion de tournoi. L'application doit s'exécuter sur le port `84`
+et utiliser une base de données PostgreSQL.
+
+![Bracket](.docs/bracket.png)
+
+#### Application 5 - immich (`feat/immich`)
+
+Déploie une instance de [immich], une application pour organiser et gérer ses photos. L'application doit s'exécuter sur 
+le port `85`. Cette application possède un conteneur pour analyser les photos avec l'intelligence artificielle : vous
+devez utiliser la version *non accélérée*.
+
+> [!NOTE]
+> Cette application vous demandera un peu plus d'huile de coude et contient quelques éléments non vus en classe.
+
+![Immich](.docs/immich.png)
+
+### Fusion dans la branche `main`
+
+Fusionne la branche `dev` dans la branche `main`. N'oublie pas de pousser les changements sur GitHub.
+
+## Modalités de remise
+
+Ce travail sera remis sur GitHub Classroom. N'oublie pas de pousser toutes les branches sur GitHub et de vérifier que 
+tous tes fichiers ont bien été téléversés. Si tu souhaites remettre le travail en retard, contacte ton professeur par 
+MIO, car les travaux seront récupérés le jour exact de la remise.
+
+[Memos]: https://usememos.com/
+[Opengist]: https://opengist.io/
+[Mealie]: https://docs.mealie.io/
+[Bracket]: https://docs.bracketapp.nl/
+[immich]: https://immich.app/
+
